@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication Table Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; background-color: #f4f4f9; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; }
+        input, button { padding: 10px; margin: 5px; font-size: 16px; }
+        button { background-color: #0056b3; color: white; border: none; cursor: pointer; border-radius: 4px; }
+        button:hover { background-color: #004494; }
+        table { margin: 20px auto; border-collapse: collapse; font-size: 18px; }
+        td { padding: 8px 15px; border-bottom: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Generate a Table</h2>
+        <form method="POST">
+            <input type="number" name="number" required placeholder="Enter a number">
+            <button type="submit">Generate</button>
+        </form>
+
+        {% if table %}
+            <h3>Multiplication Table for {{ number }}</h3>
+            <table>
+                {% for row in table %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>x</td>
+                        <td>{{ row[1] }}</td>
+                        <td>=</td>
+                        <td><strong>{{ row[2] }}</strong></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>
